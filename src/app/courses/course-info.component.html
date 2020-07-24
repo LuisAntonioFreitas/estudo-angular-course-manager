@@ -1,0 +1,61 @@
+<h2>Course Info</h2>
+
+<hr />
+
+<form name="courseForm" #courseForm="ngForm" *ngIf="course">
+
+    <!-- Name -->
+    <div class="form-group row">
+        <label class="col-sm-12 mb-0 pb-0 col-form-label" for="name">Name</label>
+        <div class="col-sm-12">
+            <input [(ngModel)]="course.name" id="name" name="Name" #courseName="ngModel" class="form-control" 
+            type="text" placeholder="Name" required [ngClass]="{'is-invalid': courseName.invalid}">
+
+            <div class="invalid-feedback">
+                <span>Course {{ courseName.name }} is required</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Price -->
+    <div class="form-group row">
+        <label class="col-sm-12 mb-0 pb-0 col-form-label" for="price">Price</label>
+        <div class="col-sm-12">
+            <input [(ngModel)]="course.price" id="price" name="Price" #coursePrice="ngModel" class="form-control" 
+            type="number" placeholder="0.00" required [ngClass]="{'is-invalid': coursePrice.invalid}">
+
+            <div class="invalid-feedback">
+                <span>Course {{ coursePrice.name }} is required</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rating -->
+    <div class="form-group row">
+        <label class="col-sm-12 mb-0 pb-0 col-form-label" for="rating">Rating</label>
+        <div class="col-sm-12">
+            <input [(ngModel)]="course.rating" id="rating" name="Rating" #courseRating="ngModel" class="form-control" 
+            type="number" placeholder="0" required [ngClass]="{'is-invalid': courseRating.invalid}">
+
+            <div class="invalid-feedback">
+                <span>Course {{ courseRating.name }} is required</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Description -->
+    <div class="form-group row">
+        <label class="col-sm-12 mb-0 pb-0 col-form-label" for="description">Description</label>
+        <div class="col-sm-12">
+            <textarea [(ngModel)]="course.description" id="description" name="Description" #courseDescription="ngModel" class="form-control" 
+            type="text" placeholder="Description" required [ngClass]="{'is-invalid': courseDescription.invalid}"></textarea>
+
+            <div class="invalid-feedback">
+                <span>Course {{ courseDescription.name }} is required</span>
+            </div>
+        </div>
+    </div>
+
+    <button [disabled]="courseForm.invalid" (click)="save()" class="btn btn-primary mr-2">Save</button>
+    <button [routerLink]="['/courses']" class="btn btn-secondary">Back</button>
+</form>
