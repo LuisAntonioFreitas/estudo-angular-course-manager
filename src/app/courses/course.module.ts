@@ -32,6 +32,10 @@ import { AppPipeModule } from '../shared/pipe/app-pipe.module';
         path: 'courses/info/:id', component: CourseInfoComponent
       }
     ])
+  ],
+  exports: [
+    CourseListComponent,
+    CourseInfoComponent
   ]
 })
 export class CourseModule { }

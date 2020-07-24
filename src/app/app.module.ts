@@ -8,10 +8,10 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { MainPageModule } from './mainpage/mainpage.module';
 import { CoreModule } from './core/core.module';
 
 import { CourseModule } from './courses/course.module';
-
 
 import { from } from 'rxjs';
 
@@ -27,10 +27,14 @@ import { from } from 'rxjs';
 
     CourseModule, 
 
+    MainPageModule,
     CoreModule, 
     RouterModule.forRoot([
       {
-        path: '', redirectTo: 'courses', pathMatch: 'full'
+        path: '', redirectTo: 'mainpage', pathMatch: 'full'
+      },
+      {
+        path: 'mainpage', component: MainPageModule
       }
     ])
   ],

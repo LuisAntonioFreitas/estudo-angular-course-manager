@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { Course } from './course';
 import { CourseService } from './course.services';
 
@@ -12,7 +13,8 @@ export class CourseInfoComponent implements OnInit {
     course: Course;
 
     constructor(private activateRoute: ActivatedRoute, 
-                private courseService: CourseService) {}
+                private courseService: CourseService,
+                private location: Location) {}
 
     ngOnInit(): void {
         this.courseService.retrieveById(+this.activateRoute.snapshot.paramMap.get('id')).subscribe({
@@ -29,6 +31,7 @@ export class CourseInfoComponent implements OnInit {
         this.courseService.save(this.course).subscribe({
             next: course => {
                 console.log('Save with success', course);
+                this.location.back();
               },
               error: err => {
                 console.log('Error', err);
